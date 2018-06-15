@@ -110,7 +110,7 @@ public class FXMLDocumentController implements Initializable {
 
         ///os itens do comboBox são alterados para a lista da observablelist
         cursoComboBox.setItems(observableListCursos);
-
+        cursoComboBox.getSelectionModel().selectFirst();
     }
 
     @FXML
