@@ -142,8 +142,7 @@ public class FXMLDocumentController implements Initializable {
             posiçãoVetor = Integer.parseInt(posição.toString()); ///posição do vetor vai receber a posição retornada pelo toString da classe PosiçãoArrayList
             exibiçãoTextArea.setText("pos: " + (posiçãoVetor + 1) + "\n" + dadosAluno.get(posiçãoVetor).toString());  /// A textArea vai exibir o a string retornada pelo toString da classe Aluno          
 
-            //aqui todos os campos de TextField ficam vazios
-            
+            //aqui todos os campos de TextField ficam vazios            
             nomeTextField.setText(null);
             sobrenomeTextField.setText(null);
             emailTextField.setText(null);
@@ -239,5 +238,4 @@ public class FXMLDocumentController implements Initializable {
         int pos = dadosAluno.size();
         return "Controle de alunos: " + (pos) + " alunos cadastrados";
     }
-
 }
