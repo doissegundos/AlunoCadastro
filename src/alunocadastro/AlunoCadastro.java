@@ -24,3 +24,4 @@ public class AlunoCadastro extends Application {
     }
 
 }
+
