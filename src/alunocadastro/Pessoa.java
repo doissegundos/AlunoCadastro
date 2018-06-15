@@ -12,7 +12,7 @@ public class Pessoa {
     private String mes;
     private String ano;
 
-    public Pessoa(String nome, String Sobrenome, String email, String dia, String mes, String ano) {
+    public Pessoa(String nome, String Sobrenome, String email, String dia, String mes, String ano) { ///metodo construtor
         this.nome = nome;
         this.sobrenome = Sobrenome;
         this.email = email;
@@ -90,14 +90,15 @@ public class Pessoa {
         String diaForm = formatarDia.format(data);
         int diaAtual = Integer.parseInt(diaForm);
 
-        //aqui vamos converter o dia, mes e ano que foram inseridos no cadastro e estão em String e foram recebidos como parametro da classe FXMLDOCUMENTCONTROLER para inteiro
+        //aqui vamos converter o dia, mes e ano que foram inseridos no cadastro e estão em String e foram recebidos como parametro da classe FXMLDocumentControler para inteiro
         int diaNas = Integer.parseInt(dia);
         int mesNas = Integer.parseInt(mes);
         int anoNas = Integer.parseInt(ano);
 
         //aqui está sendo feito o calculo da idade
+        ///caso a data inserida seja uma data invalida, então ele vai retornar -1, o que vai gerar um erro na classe FXMLDocumentControler
         int idade = -1;
-        if (anoNas <= anoAtual && mesNas <= 12) {
+        if (anoNas <= anoAtual && mesNas <= 12 && mesNas > 0) {
             if (diaVeridico(diaNas, mesNas, anoNas) == true) {
                 idade = anoAtual - anoNas;
                 if (mesAtual < mesNas) {
@@ -111,11 +112,12 @@ public class Pessoa {
         return idade;
     }
 
-    public String dataDeNascimento() {
+    public String dataDeNascimento() { //vai retornar uma string com a data de nascimento inserida
         return dia + "/" + mes + "/" + ano;
     }
 
     public boolean diaVeridico(int diaNas, int mesNas, int anoNas) { // esse metodo vai testar e saber se o dia inserido é verdadeiro ou não
+        ///caso o dia inserido seja falso ele vai retornar false, e se for verdadeiro ele vai retornar true
         boolean retorno = false;
         if (mesNas == 2) {
             if (diaNas <= 29 && (anoNas % 4 == 0) || diaNas <= 28) {
