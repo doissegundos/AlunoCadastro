@@ -55,7 +55,7 @@ public class Aluno extends Pessoa {
         return media;
     }
 
-    public String situação() {
+    public String situação() { ///esse metodo vai retornar a situação do aluno
         String situação;
         if (media() >= 7) {
             situação = "APROVADO POR MÉDIA";
@@ -70,8 +70,8 @@ public class Aluno extends Pessoa {
     }
 
     @Override
-    public String toString() {
-        return "Nome: " + nomeCompleto() + "\n"
+    public String toString() { //o toString vai retornar todos os dados dos alunos
+        return "Nome: " + nomeCompleto() + "\n" 
                 + "E-mail: " + getEmail() + "\n"
                 + "Idade: " + idade() + "\n"
                 + "Data de nascimento: " + dataDeNascimento() + "\n"
