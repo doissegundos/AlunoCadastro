@@ -135,7 +135,7 @@ public class FXMLDocumentController implements Initializable {
             Aluno aluno = new Aluno(curso, matricula, nota1, nota2, nota3, nome, sobrenome, email, dia, mes, ano); /// aqui a classe Aluno vai receber todos os dados de aluno
 
             if (aluno.idade() == -1) { /// na classe Pessoa tem um metodo chamado idade(), se esse metodo retornar -1, então a data informada no cadastro é invalida, logo o programa dará erro e terá um tratamento de exceção
-                idadeVeridica = 1 / 0;
+                throw new Exception();
             }
             dadosAluno.add(aluno); ///aqui os dados são inserido no arraylist dadosAluno
             tituloLabel.setText(titulo()); ///aqui o texto do Label é alterado de acordo com o retorno no metodo titulo()
@@ -143,6 +143,7 @@ public class FXMLDocumentController implements Initializable {
             exibiçãoTextArea.setText("pos: " + (posiçãoVetor + 1) + "\n" + dadosAluno.get(posiçãoVetor).toString());  /// A textArea vai exibir o a string retornada pelo toString da classe Aluno          
 
             //aqui todos os campos de TextField ficam vazios
+            
             nomeTextField.setText(null);
             sobrenomeTextField.setText(null);
             emailTextField.setText(null);
@@ -240,4 +241,3 @@ public class FXMLDocumentController implements Initializable {
     }
 
 }
-
