@@ -1,4 +1,3 @@
-
 package alunocadastro;
 public class PosiçãoArrayList { //criamos essa classe para controlar a posição do arraylist
     private int posição;
@@ -16,9 +15,10 @@ public class PosiçãoArrayList { //criamos essa classe para controlar a posiç�
     }
 
     @Override
-    public String toString() {
+    public String toString() { 
         return Integer.toString(posição);
     }
     
     
 }
+
