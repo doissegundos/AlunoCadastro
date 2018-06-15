@@ -19,7 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 
 public class FXMLDocumentController implements Initializable {
-    
+
     ///aqui são declaradas as caixas de textos, butões, comboBox que foram criadas no javaFX
     @FXML
     private TextField nomeTextField;
@@ -84,7 +84,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     public void comboBoxCurso() { // esse metodo vai adicionar os cursos ao combobox
-        
+
         ///primeiramente cada variavel vai receber uma string
         String cienciasEconomicas = "Ciências Econômicas";
         String engComputação = "Engenharia da Computação";
@@ -104,10 +104,10 @@ public class FXMLDocumentController implements Initializable {
         listaDeCursos.add(musica);
         listaDeCursos.add(odontologia);
         listaDeCursos.add(psicologia);
-        
+
         ///agora listaDeCursos é adionada em uma observablelist
         observableListCursos = FXCollections.observableArrayList(listaDeCursos);
-        
+
         ///os itens do comboBox são alterados para a lista da observablelist
         cursoComboBox.setItems(observableListCursos);
 
@@ -116,10 +116,10 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public void cadastarAluno() { //esse metodo vai ser chamado pelo Button "cadastrar" e vai inserir os dados dos alunos no arraylist
         try { // utilizamos o controlador de exceções para se caso der algum erro podermos tratar essas exceções
-            
+
             ///na declaração dessas variaveis tem a explicação de cada uma delas
             posiçãoVet = dadosAluno.size(); ///posição do vetor está recebendo o valor da posição do vetor
-            nome = nomeTextField.getText(); 
+            nome = nomeTextField.getText();
             sobrenome = sobrenomeTextField.getText();
             email = emailTextField.getText();
             dia = diaTextField.getText();
@@ -130,18 +130,18 @@ public class FXMLDocumentController implements Initializable {
             nota2 = Float.parseFloat(nota2TextField.getText());
             nota3 = Float.parseFloat(nota3TextField.getText());
             curso = cursoComboBox.getSelectionModel().getSelectedItem(); /// aqui curso recebe a string que foi selecionada no comboBox
-            
+
             PosiçãoArrayList posição = new PosiçãoArrayList(posiçãoVet); ///aqui é criado um objeto do tipo PosiçãoArrayList que vai ajudar a controlar a posição do arraylist de alunos
             Aluno aluno = new Aluno(curso, matricula, nota1, nota2, nota3, nome, sobrenome, email, dia, mes, ano); /// aqui a classe Aluno vai receber todos os dados de aluno
-            
-            if(aluno.idade()==-1){ /// na classe Pessoa tem um metodo chamado idade(), se esse metodo retornar -1, então a data informada no cadastro é invalida, logo o programa dará erro e terá um tratamento de exceção
-                idadeVeridica = 1/0;
+
+            if (aluno.idade() == -1) { /// na classe Pessoa tem um metodo chamado idade(), se esse metodo retornar -1, então a data informada no cadastro é invalida, logo o programa dará erro e terá um tratamento de exceção
+                idadeVeridica = 1 / 0;
             }
             dadosAluno.add(aluno); ///aqui os dados são inserido no arraylist dadosAluno
             tituloLabel.setText(titulo()); ///aqui o texto do Label é alterado de acordo com o retorno no metodo titulo()
             posiçãoVetor = Integer.parseInt(posição.toString()); ///posição do vetor vai receber a posição retornada pelo toString da classe PosiçãoArrayList
             exibiçãoTextArea.setText("pos: " + (posiçãoVetor + 1) + "\n" + dadosAluno.get(posiçãoVetor).toString());  /// A textArea vai exibir o a string retornada pelo toString da classe Aluno          
-            
+
             //aqui todos os campos de TextField ficam vazios
             nomeTextField.setText(null);
             sobrenomeTextField.setText(null);
@@ -152,21 +152,22 @@ public class FXMLDocumentController implements Initializable {
             matriculaTextField.setText(null);
             nota1TextField.setText(null);
             nota2TextField.setText(null);
-            nota3TextField.setText(null);       
-            
+            nota3TextField.setText(null);
+
         } catch (Exception erro) { /// caso ocorra algum erro dentro do try, então ele vai chamar o metodo dadosErrados que exibe uma mensagem dizendo que os dados estão errados
             dadosErrados();
         }
-        
+
     }
+
     @FXML
     public void excluirbutton() { //esse metodo vai controlar o button "excluir" e vai ser chamado no action on
         ///utilizamos try e catch para fazer o controle de exceções
-        try { 
+        try {
             dadosAluno.remove(posiçãoVetor); //nessa linha el exclui os dados que estão na "posiçãoVetor" do arraylist dadosAluno
             tituloLabel.setText(titulo());
             maiorPosição = dadosAluno.size() - 1; ///"maiorPosição" recebe o valor da maior posição do arraylist dadosAluno
-            
+
             ///aqui ele vai fazer o controle da exclusão dos dados
             if (posiçãoVetor > 0) {
                 posiçãoVetor--;
@@ -239,3 +240,4 @@ public class FXMLDocumentController implements Initializable {
     }
 
 }
+
